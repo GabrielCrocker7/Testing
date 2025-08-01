@@ -1,157 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy National Girlfriends Day, Madi!</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap');
-    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg,#ff9a9e,#fad0c4); color: #333; text-align: center; overflow-x: hidden; position: relative; }
-    .background-pattern { position:absolute;top:0;left:0;width:100%;height:100%;background:url('https://www.toptal.com/designers/subtlepatterns/patterns/diagonal_stripes.png') repeat;opacity:0.1;z-index:-1;background-size:cover;background-attachment:fixed;background-position:center;transform:scale(1.1); }
 
-    header { background: #ff1493; color: white; padding: 60px; position: relative; overflow: hidden; border-bottom: 10px solid #ff69b4; box-shadow: inset 0 0 10px rgba(0,0,0,0.2); }
-    header::before { content: "❤️"; font-size: 6em; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity:0.1; z-index:0; animation: pulse 3s infinite ease-in-out; }
-    @keyframes pulse { 0%{transform:translate(-50%,-50%) scale(1);opacity:0.1;} 50%{transform:translate(-50%,-50%) scale(1.1);opacity:0.3;} 100%{transform:translate(-50%,-50%) scale(1);opacity:0.1;} }
-    header h1 { margin:0;font-family:'Pacifico',cursive;font-size:4em;position:relative;z-index:1;text-shadow:3px 3px 6px rgba(0,0,0,0.3);letter-spacing:2px; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-    .scroll-overlay { position: fixed; top: 0; left:0; width:100%; height:100%; background: rgba(255,255,255,0.95); display: flex; justify-content: center; align-items: center; z-index: 1000; animation: fadeOutOverlay 1s 6s forwards; }
-    .scroll-content { width: 80%; max-width:700px; background:#fffdf5; border: 8px solid #deb887; border-radius: 30px; padding: 40px; font-family:'Georgia',serif; text-align:center; transform-origin: top; animation: rollDown 2s ease-out; line-height:1.8; }
-    .scroll-content h2,h3 { margin:8px 0; color:#5a2a2a; font-family:'Pacifico',cursive; }
-    .scroll-content p { white-space:pre-wrap; text-align:left; font-size:1.2em; color:#5a2a2a; margin:20px 0 0; }
+    header {
+      background: #ff1493;
+      color: white;
+      padding: 60px 20px;
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      border-bottom: 10px solid #ff69b4;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
 
-    @keyframes rollDown { 0% { transform: scaleY(0); opacity:0; } 60% { transform: scaleY(1.1); opacity:1;} 100% { transform: scaleY(1); } }
-    @keyframes fadeOutOverlay { to { opacity: 0; visibility: hidden; } }
+    .container {
+      padding: 40px 20px 100px;
+      max-width: 1200px;
+      margin: auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
 
-    .container { padding: 40px 20px; max-width:1200px; margin: 60px auto 0; background:rgba(255,255,255,0.9); border-radius:20px; box-shadow:0px 15px 40px rgba(0,0,0,0.3); overflow:hidden; }
-    .message { background: linear-gradient(145deg,#ffffff,#f0f0f0); border:3px solid #ff1493; border-radius:20px; padding:40px; margin-bottom:40px; box-shadow:4px 4px 20px rgba(0,0,0,0.2); font-size:1.2em; }
+    .message, .final-message {
+      background: #fff0f5;
+      padding: 30px;
+      border: 3px solid #ff1493;
+      border-radius: 15px;
+      margin: 30px 0;
+      font-size: 1.2em;
+    }
 
-    .carousel { position:relative; overflow:hidden; width:100%; max-width:100%; margin:0 auto; box-sizing:border-box; }
-    .carousel-inner { display:flex; flex-wrap:nowrap; scroll-snap-type:x mandatory; overflow-x:auto; scroll-behavior:smooth; width:100%; box-sizing:border-box; position:relative; }
-    .carousel-item { flex:0 0 auto; width:90%; margin:0 5%; scroll-snap-align:center; box-sizing:border-box; display:flex; flex-direction:column; align-items:center; position:relative; }
-    .carousel-item.highlighted img { border: 6px solid gold; box-shadow: 0 0 20px rgba(255,215,0,0.8); }
-    .carousel-item img { width:100%; height:auto; border-radius:20px; border:8px solid #ff1493; box-shadow:0px 12px 24px rgba(0,0,0,0.3); object-fit:cover; transition:border 0.5s ease, box-shadow 0.5s ease; }
-    .carousel-item p { margin-top:10px; font-size:1.1em; color:#ff1493; font-weight:bold; }
+    .poem-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 240, 245, 0.98);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      overflow-y: auto;
+    }
 
-    .final-message { background:#ff1493; color:white; padding:30px; border-radius:15px; font-size:1.5em; font-family:'Pacifico',cursive; margin-top:40px; box-shadow:0px 15px 30px rgba(0,0,0,0.3);}
-    footer { text-align:center; padding:25px; background:#ff1493; color:white; position:fixed; width:100%; bottom:0; font-size:1.3em; border-top:5px solid #ff69b4; box-shadow:0px -5px 15px rgba(0,0,0,0.2); }
-    footer p { margin:0; font-family:'Pacifico',cursive; letter-spacing:1px; }
+    .scroll-content {
+      background: white;
+      padding: 40px;
+      border: 6px double #ff69b4;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      max-width: 700px;
+      border-radius: 20px;
+      font-size: 1.3em;
+      color: #333;
+      line-height: 1.6;
+    }
 
-    .falling-hearts { position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(255,255,255,0.9); display:none; z-index:1000; justify-content:center; align-items:center; text-align:center; font-size:2em; color:#ff1493; overflow:hidden; opacity:1; transition:opacity 5s ease-out; }
-    .falling-hearts.show { display:flex; }
-    .falling-hearts.fade-out { opacity:0; }
-    .falling-hearts .message { position:relative; z-index:1; font-size:2em; font-family:'Pacifico',cursive; color:#ff1493; text-shadow:0 0 15px rgba(255,105,180,0.8); }
-    .falling-heart { position:absolute; width:30px; height:30px; background:url('https://static.vecteezy.com/system/resources/thumbnails/022/528/768/small_2x/cute-heart-love-logo-icon-isolated-on-white-background‑png.png') no-repeat center center; background-size:cover; animation:fall 10s linear infinite; }
-    @keyframes fall {0%{top:-30px;opacity:1;}100%{top:100vh;opacity:0;} }
+    .scroll-content h2 {
+      font-family: 'Roboto', sans-serif;
+      color: #ff1493;
+      margin-bottom: 20px;
+    }
+
+    .scroll-content button {
+      margin-top: 30px;
+      background: #ff1493;
+      color: white;
+      font-size: 1em;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .highlight-label {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.1em;
+      color: #ff1493;
+      margin-top: 10px;
+    }
+
+    .carousel {
+      overflow-x: auto;
+      display: flex;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 20px;
+    }
+
+    .carousel-item {
+      flex: 0 0 90%;
+      scroll-snap-align: center;
+      background: #fff;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-item img {
+      width: 100%;
+      border-radius: 15px;
+      border: 5px solid #ff69b4;
+    }
+
+    .special-border img {
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+    }
   </style>
 </head>
 <body>
-  <div class="background-pattern"></div>
-
-  <!-- Poem Scroll Overlay -->
-  <div class="scroll-overlay">
+  <div class="poem-popup" id="poemPopup">
     <div class="scroll-content">
       <h2>August 1st, 2025</h2>
-      <h3>To THE Madilyn Swavola</h3>
       <p>
-TRUE<br>
-<br>
-What was that secret feeling none could know?<br>
-A fool I’d be, to claim that apple’s eye,<br>
-That myth, that art, a fable yet to show,<br>
-But cools my heart, each time I hear her cry.<br>
-<br>
-To take for all there is, today is gold.<br>
-Yet flaw is virtue too, adored a while,<br>
-So fool I’ll be, to wrap her when she’s cold,<br>
-And stake in awe, its worth for just her smile.<br>
-<br>
-To see her world, I’d sought, but lit a fire,<br>
-(Sick hearts like mine are seldom truly sane),<br>
-And watched, as she’d become my own entire.<br>
-For all she is, I pick to end this feign.<br>
-<br>
-In all my thoughts of course, that her is you,<br>
-I know not what you’ll say, but know that this is true.
+        <strong>TRUE</strong><br><br>
+        What was that secret feeling none could know?<br>
+        A fool I’d be, to claim that apple’s eye,<br>
+        That myth, that art, a fable yet to show,<br>
+        But cools my heart, each time I hear her cry.<br><br>
+
+        To take for all there is, today is gold.<br>
+        Yet flaw is virtue too, adored a while,<br>
+        So fool I’ll be, to wrap her when she’s cold,<br>
+        And stake in awe, its worth for just her smile.<br><br>
+
+        To see her world, I’d sought, but lit a fire,<br>
+        (Sick hearts like mine are seldom truly sane),<br>
+        And watched, as she’d become my own entire.<br>
+        For all she is, I pick to end this feign.<br><br>
+
+        In all my thoughts of course, that her is you,<br>
+        I know not what you’ll say, but know that this is true.<br><br>
+
+        —<br>To <strong>THE</strong> Madilyn Swavola, love Gabe Crocker
       </p>
+      <button onclick="document.getElementById('poemPopup').style.display='none'">Close</button>
     </div>
   </div>
 
-  <header><h1>Happy National Girlfriends Day, Madi!</h1></header>
-
+  <header>Happy National Girlfriends Day, Madi!</header>
   <div class="container">
-    <div class="message"><h2>To My Beautiful Girlfriend, Madi</h2>
-      <p>On this special day... You mean the world to me!</p>
+    <div class="message">
+      <h2>To My Beautiful Girlfriend, Madi</h2>
+      <p>
+        On this special day, I want to celebrate the incredible person you are and the joy you bring into my life. 
+        Every moment with you is a treasured memory, and I look forward to making many more. You mean the world to me!
+      </p>
     </div>
-
-    <!-- Carousel -->
     <div class="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item highlighted">
-          <img src="https://www.dropbox.com/scl/fi/rn0nf0ug92zmmuuprryk3/IMG_9209.jpeg?raw=1" alt="Favorite of us">
-          <p>This is my favorite of us</p>
-        </div>
-        <div class="carousel-item highlighted">
-          <img src="https://www.dropbox.com/scl/fi/z9dc5ysihy4hgl5aykiw7/IMG_3204.jpeg?raw=1" alt="Cutest photo">
-          <p>This is the cutest</p>
-        </div>
-        <div class="carousel-item highlighted">
-          <img src="https://www.dropbox.com/scl/fi/sd2a1kj6o2dsgo8h9so8t/IMG_9154.jpeg?raw=1" alt="Sweetest photo">
-          <p>The sweetest</p>
-        </div>
-        <div class="carousel-item highlighted">
-          <img src="https://www.dropbox.com/scl/fi/2bilan6rad9fzxj1wjalt/IMG_7196.jpeg?raw=1" alt="Salt Springs memory">
-          <p>One of our most fun memories (Salt Springs)</p>
-        </div>
+      <!-- New Highlighted Images -->
+      <div class="carousel-item special-border">
+        <img src="https://www.dropbox.com/scl/fi/rn0nf0ug92zmmuuprryk3/IMG_9209.jpeg?rlkey=3z0ox4rzoz6bkc582w8pqobb8&raw=1" alt="Favorite Photo">
+        <div class="highlight-label">My favorite photo of us</div>
+      </div>
+      <div class="carousel-item special-border">
+        <img src="https://www.dropbox.com/scl/fi/z9dc5ysihy4hgl5aykiw7/IMG_3204.jpeg?rlkey=38wescwftsij3kjg4cnfrqmhq&raw=1" alt="Cutest">
+        <div class="highlight-label">Our cutest</div>
+      </div>
+      <div class="carousel-item special-border">
+        <img src="https://www.dropbox.com/scl/fi/4c4n3lroorfa38nmggguj/SaltSprings.jpeg?rlkey=somekey&raw=1" alt="Salt Springs Fun">
+        <div class="highlight-label">One of our most fun memories (Salt Springs)</div>
+      </div>
 
-        <!-- Existing Photos -->
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/4v6trwzcn1t0sweabl82t/IMG_8814.jpeg?raw=1" alt="Photo 1"></div>
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/vkfk7a7l5knchhuog3u2m/IMG_3960.jpeg?raw=1" alt="Photo 2"></div>
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/div2fbw9rl0c7kjb8qmtk/IMG_4023.jpeg?raw=1" alt="Photo 3"></div>
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/84cs2ehg0nrdw3efbpxq/IMG_7745.jpeg?raw=1" alt="Photo 4"></div>
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/tfs8i3fycqgg7vnpgundp/IMG_6587.jpeg?raw=1" alt="Photo 5"></div>
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/lrx0l6v4tzeuri3lu079y/IMG_8224.jpeg?raw=1" alt="Photo 6"></div>
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/42il757zdvwahsb80qkmj/Snapchat-1464861716.jpeg?raw=1" alt="Photo 7"></div>
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/1i7obn4y7cn4b4ygrhtl8/IMG_4658.jpeg?raw=1" alt="Photo 8"></div>
-        <div class="carousel-item"><img src="https://www.dropbox.com/scl/fi/bpg0jjne5m1jeryju87kr/IMG_3946.jpeg?raw=1" alt="Photo 9"></div>
-        <div class="carousel-item special-border"><img src="https://www.dropbox.com/scl/fi/y0hx0ze6y6iafpd2qtd3r/IMG_4619.jpeg?raw=1" alt="Photo 10"></div>
+      <!-- Original Images -->
+      <div class="carousel-item">
+        <img src="https://www.dropbox.com/scl/fi/4v6trwzcn1t0sweabl82t/IMG_8814.jpeg?rlkey=9k9dzygqfyzedyzarpivj0ice&raw=1" alt="Photo 1">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.dropbox.com/scl/fi/vkfk7a7l5knchhuog3u2m/IMG_3960.jpeg?rlkey=uqiuagp2c24buyrw6jao4sp1x&raw=1" alt="Photo 2">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.dropbox.com/scl/fi/div2fbw9rl0c7kjb8qmtk/IMG_4023.jpeg?rlkey=krlpehwjeggc4mscec4s06n9h&raw=1" alt="Photo 3">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.dropbox.com/scl/fi/84cs2eh7g0nrdw3efbpxq/IMG_7745.jpeg?rlkey=i0wwq0ysvh08rl1a4kkjxz517&raw=1" alt="Photo 4">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.dropbox.com/scl/fi/tfs8i3fycqgg7vnpgundp/IMG_6587.jpeg?rlkey=f5gmxk38crx7z9mk2lpuefjwy&raw=1" alt="Photo 5">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.dropbox.com/scl/fi/lrx0l6v4tzeuri3lu079y/IMG_8224.jpeg?rlkey=dgg0r0vhwj0loojr75n22do2q&raw=1" alt="Photo 6">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.dropbox.com/scl/fi/42il757zdvwahsb80qkmj/Snapchat-1464861716.jpeg?rlkey=esx78etj44973ecrypiw4qr34&raw=1" alt="Photo 7">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.dropbox.com/scl/fi/1i7obn4y7cn4b4ygrhtl8/IMG_4658.jpeg?rlkey=vnyrszi5x3nlcyjlwhixbfvc9&raw=1" alt="Photo 8">
+      </div>
+      <div class="carousel-item special-border">
+        <img src="https://www.dropbox.com/scl/fi/y0hx0ze6y6iafpd2qtd3r/IMG_4619.jpeg?rlkey=2va54yvc29xovumv4z4tfklw9&raw=1" alt="Photo 10">
       </div>
     </div>
 
-    <div class="final-message"><p>Looking forward to many more special days with you!</p></div>
-    <div class="message"><p>I am the luckiest boyfriend in the world.</p></div>
+    <div class="final-message">
+      <p>Looking forward to many more special days with you. I am the luckiest boyfriend.</p>
+    </div>
   </div>
 
-  <footer><p>Created with love for Madi</p></footer>
-
-  <div class="falling-hearts" id="fallingHearts"><div class="message">You are loved, Madi</div></div>
+  <footer style="background:#ff1493; color:white; padding:20px; font-size:1.3em; font-family:'Pacifico', cursive;">
+    Created with love for Madi 💕
+  </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const carousel = document.querySelector('.carousel-inner');
-      const fallingHearts = document.getElementById('fallingHearts');
-      const lastItem = document.querySelector('.carousel-item.special-border');
-      const totalHearts = 50;
-      function createFallingHearts(){
-        for(let i=0;i<totalHearts;i++){
-          const heart = document.createElement('div');
-          heart.classList.add('falling-heart');
-          heart.style.left = Math.random()*100+'vw';
-          heart.style.animationDuration = (Math.random()*5+5)+'s';
-          fallingHearts.appendChild(heart);
-        }
-      }
-      createFallingHearts();
-      let animationPlayed=false;
-      function checkScroll(){
-        const scrollPos=carousel.scrollLeft+carousel.clientWidth;
-        const lastPos=lastItem.offsetLeft+lastItem.clientWidth;
-        if(scrollPos>=lastPos && !animationPlayed){
-          fallingHearts.classList.add('show');
-          setTimeout(()=>fallingHearts.classList.add('fade-out'),5000);
-          animationPlayed=true;
-        }
-      }
-      carousel.addEventListener('scroll',checkScroll);
-    });
+    // Falling hearts placeholder (optional if you want the full effect)
+    // Poem popup logic
+    window.onload = () => {
+      const popup = document.getElementById('poemPopup');
+      popup.style.display = 'flex';
+    };
   </script>
 </body>
 </html>
